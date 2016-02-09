@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="https://ws.tsipayment.net/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="TSIService" targetNamespace="https://ws.tsipayment.net/">
+    <types>
+        <xsd:schema targetNamespace="https://ws.tsipayment.net/">
+            <xsd:complexType name="GetEWalletRequest">
+                <xsd:all>
+                    <xsd:element name="signature" type="xsd:string"/>
+                    <xsd:element name="merchantid" type="xsd:int"/>
+                    <xsd:element name="customerid" type="xsd:string"/>
+                    <xsd:element name="transactionid" type="xsd:string"/>
+                    <xsd:element name="keyid" type="xsd:int"/>
+                    <xsd:element name="timestamp" type="xsd:string"/>
+                </xsd:all>
+            </xsd:complexType>
+            <xsd:complexType name="GetEWalletResponse">
+                <xsd:all>
+                    <xsd:element name="status" type="xsd:string"/>
+                    <xsd:element name="errorcode" type="xsd:string"/>
+                    <xsd:element name="message" type="xsd:string"/>
+                    <xsd:element name="owneremail" type="xsd:string"/>
+                    <xsd:element name="ownerfname" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerlname" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerphone" type="xsd:string" nillable="true"/>
+                    <xsd:element name="owneraddress" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownercity" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownercountry" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerjob" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerbirthdate" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerbirthcity" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerzip" type="xsd:string" nillable="true"/>
+                    <xsd:element name="cardnumber" type="xsd:string" nillable="true"/>
+                    <xsd:element name="cardtype" type="xsd:string" nillable="true"/>
+                </xsd:all>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfVoucher">
+                <xsd:complexContent>
+                    <xsd:restriction base="soap-enc:Array">
+                        <xsd:attribute ref="soap-enc:arrayType" wsdl:arrayType="tns:Voucher[]"/>
+                    </xsd:restriction>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Voucher">
+                <xsd:all>
+                    <xsd:element name="pin" type="xsd:string"/>
+                    <xsd:element name="serial" type="xsd:string"/>
+                    <xsd:element name="balance" type="xsd:int"/>
+                    <xsd:element name="currency" type="xsd:string"/>
+                    <xsd:element name="originalamount" type="xsd:int"/>
+                    <xsd:element name="enddate" type="xsd:string"/>
+                </xsd:all>
+            </xsd:complexType>
+            <xsd:complexType name="BuyVouchersRequest">
+                <xsd:all>
+                    <xsd:element name="customerid" type="xsd:string"/>
+                    <xsd:element name="signature" type="xsd:string"/>
+                    <xsd:element name="merchantid" type="xsd:int"/>
+                    <xsd:element name="transactionid" type="xsd:string"/>
+                    <xsd:element name="amount" type="xsd:int"/>
+                    <xsd:element name="currency" type="xsd:string"/>
+                    <xsd:element name="keyid" type="xsd:int"/>
+                    <xsd:element name="timestamp" type="xsd:string"/>
+                    <xsd:element name="owneremail" type="xsd:string"/>
+                    <xsd:element name="ownerlname" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerfname" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerphone" type="xsd:string" nillable="true"/>
+                    <xsd:element name="owneraddress" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownercity" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownercountry" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerzip" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerbirthdate" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerbirthcity" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerjob" type="xsd:string" nillable="true"/>
+                    <xsd:element name="ownerip" type="xsd:string" nillable="true"/>
+                    <xsd:element name="cardnumber" type="xsd:string" nillable="true"/>
+                    <xsd:element name="cvc" type="xsd:string" nillable="true"/>
+                    <xsd:element name="expirydatemonth" type="xsd:string" nillable="true"/>
+                    <xsd:element name="expirydateyear" type="xsd:string" nillable="true"/>
+                    <xsd:element name="cardtype" type="xsd:string" nillable="true"/>
+                    <xsd:element name="urlok" type="xsd:string" nillable="true"/>
+                    <xsd:element name="urlnok" type="xsd:string" nillable="true"/>
+                    <xsd:element name="urls2s" type="xsd:string" nillable="true"/>
+                    <xsd:element name="flag3ds" type="xsd:string" nillable="true"/>
+                    <xsd:element name="httpuseragent" type="xsd:string" nillable="true"/>
+                    <xsd:element name="httpaccept" type="xsd:string" nillable="true"/>
+                    <xsd:element name="params" type="xsd:string" nillable="true"/>
+                    <xsd:element name="language" type="xsd:string" nillable="true"/>
+                    <xsd:element name="wallet" type="xsd:string" nillable="true"/>
+                </xsd:all>
+            </xsd:complexType>
+            <xsd:complexType name="BuyVouchersResponse">
+                <xsd:all>
+                    <xsd:element name="status" type="xsd:string"/>
+                    <xsd:element name="errorcode" type="xsd:string"/>
+                    <xsd:element name="message" type="xsd:string"/>
+                    <xsd:element name="reference" type="xsd:string"/>
+                    <xsd:element name="cardnumber" type="xsd:string"/>
+                    <xsd:element name="cardtype" type="xsd:string"/>
+                    <xsd:element name="htmlanswer" type="xsd:string"/>
+                    <xsd:element name="vouchers" type="tns:ArrayOfVoucher"/>
+                </xsd:all>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+</definitions>
